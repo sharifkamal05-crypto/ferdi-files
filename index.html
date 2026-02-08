@@ -30,6 +30,8 @@
     #images {
         display: none;
         gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     #images img {
@@ -52,10 +54,10 @@
 </div>
 
 <script>
-    // ⏰ HIER 00:00 ZEIT EINSTELLEN
-    const endTime = new Date("2026-02-09T00:00:00").getTime();
+    // ⏰ 08.02.2026 um 00:30
+    const endTime = new Date("2026-02-08T00:30:00").getTime();
 
-    function update() {
+    function updateCountdown() {
         const now = new Date().getTime();
         const diff = endTime - now;
 
@@ -65,18 +67,18 @@
             return;
         }
 
-        const h = Math.floor(diff / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
         document.getElementById("countdown").innerText =
-            String(h).padStart(2,"0") + ":" +
-            String(m).padStart(2,"0") + ":" +
-            String(s).padStart(2,"0");
+            String(hours).padStart(2, "0") + ":" +
+            String(minutes).padStart(2, "0") + ":" +
+            String(seconds).padStart(2, "0");
     }
 
-    update();
-    setInterval(update, 1000);
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 </script>
 
 </body>
