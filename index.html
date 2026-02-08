@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ferdi files</title>
+
+<style>
+    body {
+        background: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    h1 {
+        font-size: 4rem;
+        margin-bottom: 20px;
+    }
+    #countdown {
+        font-size: 3rem;
+        letter-spacing: 3px;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Ferdi files</h1>
+<div id="countdown">Lädt…</div>
+
+<script>
+    // 🔥 FESTE Endzeit (JETZT + 24h)
+    // Einmal setzen, dann ist der Countdown live für alle
+    const endTime = new Date("2026-02-09T18:00:00").getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const diff = endTime - now;
+
+        if (diff <= 0) {
+            document.getElementById("countdown").innerText = "00:00:00";
+            return;
+        }
+
+        const h = Math.floor(diff / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerText =
+            String(h).padStart(2, "0") + ":" +
+            String(m).padStart(2, "0") + ":" +
+            String(s).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
